@@ -6,7 +6,7 @@
 apiVersion: database.oracle.com/v1alpha1
 kind: SingleInstanceDatabase
 metadata:
-  name: prebuiltdb-sample
+  name: dbexpress
   namespace: default
 spec:
 
@@ -15,7 +15,7 @@ spec:
 
   ## Secret containing SIDB password mapped to secretKey
   adminPassword:
-    secretName: db-admin-secret
+    secretName: admin-password
 
   ## Database Image
   image:
@@ -24,10 +24,10 @@ spec:
 
   ## Persistence is optional for prebuilt DB image
   ## if specified, the prebuilt DB datafiles are copied over to the persistant volume before DB startup
-  #persistence:
-    #size: 50Gi
-    ##storageClass: "local-path"
-    #accessMode: "ReadWriteOnce"
+  persistence:
+    size: 50Gi
+    storageClass: "oci-bv"
+    accessMode: "ReadWriteOnce"
 
   ## Count of Database Pods.
   replicas: 1
