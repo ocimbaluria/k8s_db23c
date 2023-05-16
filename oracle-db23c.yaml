@@ -32,7 +32,7 @@ spec:
               value: Imust-change2023It
             - name: ORACLE_RANDOM_PASSWORD
               value: "true"
-          image: gvenzl/oracle-free:latest-faststart
+          image: gvenzl/oracle-free:slim
           name: oracle
           ports:
             - containerPort: 1521
