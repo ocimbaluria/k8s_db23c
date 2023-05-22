@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: oracle
+  labels:
+    name: oracle
+spec:
+  securityContext:
+    fsGroup: 54321
+  containers:
+  - image: gvenzl/oracle-free:slim
+    name: oracle
+    env:
+      - name: APP_USER
+        value: app
+      - name: APP_USER_PASSWORD
+        value: Imust-change2023It
+      - name: ORACLE_RANDOM_PASSWORD
+        value: "true"
+    ports:
+    - containerPort: 1521
+      name: oracle
+    volumeMounts:
+    - name: oracle-persistent-storage
+      mountPath: /opt/oracle/oradata/
+  volumes:
+  - name: oracle-persistent-storage
+    persistentVolumeClaim:
+      claimName: oracle-bv-claim
