@@ -25,7 +25,7 @@ spec:
   ## Persistence is optional for prebuilt DB image
   ## if specified, the prebuilt DB datafiles are copied over to the persistant volume before DB startup
   persistence:
-    size: 50Gi
+    size: 100Gi
     storageClass: "oci-bv"
     accessMode: "ReadWriteOnce"
 
